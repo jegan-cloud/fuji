@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=yes">
+    <title>Chat Bot UI/UX & html for web Plugin</title>
+    <meta name="description" content="Chat Bot UI/UX & html for web" />
+    <meta name="keywords" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin" />
+    <meta name="author" content="css3transition" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <meta name="description" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin | Css3Transition " />
+    <meta name="keywords" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin" />
+    <meta name="abstract" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin">
+    <meta name="author" content="Rahul Yaduvanshi">
+    <meta name="technologies" content="HTML5, CSS3, HTML, CSS, JQUERY, Bootstrap, Angular">
+    <meta name="distribution" content="Global">
+    <meta name="development" content="Rahul Yaduvanshi">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="city" content="New Delhi">
+    <meta name="country" content="india">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"> -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link href="css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link id="Theme" href="css/chatBot.css" rel="stylesheet" type="text/css"/>
+    <link href="css/timeline.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/dark.css"> -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.8.55/css/materialdesignicons.min.css">
+    <link rel="stylesheet" type="text/css" href="css/emojionearea.css">
+<style>
+.botText{
+font-size:15px;
+font-family:"Times New Roman",sans-serif;
+border-radius:10px;
+max-width:100%;
+min-width:20%;
+margin-left:5px;
+margin-top:10px;
+line-height: 20px;
+text-align:left;
+background: #f1f1f1;
+/*box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.11);*/
+color:#3e3737;
+border-radius: 0 15px 15px 15px!important;
+}
+.botText table,tr,td{
+vertical-align:top;
+margin-top:5px;
+border-spacing:0;
+border-collapse: collapse;
+
+}
+.userText{
+font-size:15px;
+margin-top:10px;
+font-family:"Times New Roman",sans-serif;
+border-radius:10px;
+max-width:85%;
+min-width:10%;
+margin-bottom:10px;
+line-height: 20px;
+text-align:left;
+float: right;
+background: #7F00FF;
+    background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);
+    background: linear-gradient(to right, #E100FF, #7F00FF);
+min-height:25px;
+/*box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.11);*/
+color:white;
+margin-right:5px;
+border-radius: 15px 0px 15px 15px!important;
+}
+.userText table,tr,td{
+margin-top:5px;
+margin-left:10px;
+border-spacing:0;
+border-collapse: collapse;
+padding:5px 10px;
+}
+div.lag{
+  float: right;
+  width: 100%;
+  min-height: 15px;
+}
+#typing {
+margin-left:2px;
+margin-bottom:10px;
+background-size:cover;
+visibility: visible;
+bottom:5px;
+}
+.avatar{
+    -webkit-border-radius: 2px;
+  border-radius: 2px;
+  max-width: 20px;
+  max-height: 20px;
+    }
+	.chatSuggest{
+    padding: 5px 10px;
+    /*border:1px solid blue;*/
+    margin-right: 5px;
+    margin-left: -1px;
+    margin-bottom:10px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: left;
+    webkit-animation: zoomIn .5s cubic-bezier(.42, 0, .58, 1);
+  animation: zoomIn .5s cubic-bezier(.42, 0, .58, 1);
+  box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    background-color: #f1f2f3;
+    color: #3b3f5c;
+        }
+.chatSuggest:hover{
+    font-size: 15px;
+    color: white;
+    background-color: #7F00FF;
+    border-color: #d3d3d3;
+    box-shadow: 0 2px 5px 0 #e0e6ed, 0 2px 10px 0 #e0e6ed;
+    color: #fff!important;
+}
+</style>
+</head>
+<body onload="getFirstResponse('Greetings!!')";>
+<!-- Chat bot UI start -->
+
+
+ <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Contact us
+  </button>
+ <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+    Career
+  </button>
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Contact Us Form</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+           <form method="POST">
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Name">
+            </div>
+             <div class="form-group">
+                <div class="row">
+                    <div class="col-4">
+                         <select class="form-control">
+                        <option value="+91">+91</option>
+                         <option value="+81">+81</option>
+                    </select>
+                    </div>
+                    <div class="col-8">
+                        <input type="tel" name="phone" class="form-control" placeholder="Phone">
+                    </div>
+                </div>
+                   
+                  
+             </div>
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Email address">
+            </div>
+              <div class="form-group">
+             <input type="text" name="address" class="form-control" placeholder="Address">
+            </div>
+             <div class="form-group">
+             <input type="text" name="qualification" class="form-control" placeholder="Qualification (eg: B.E/Computer)">
+            </div>
+             <div class="form-group">
+             <input type="text" name="yearofeducation" class="form-control" placeholder="Year of Education">
+            </div>
+         </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary mx-auto d-block">Submit</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Career Form</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         <form method="POST">
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Name">
+            </div>
+             <div class="form-group">
+                <div class="row">
+                    <div class="col-4">
+                         <select class="form-control">
+                        <option value="+91">+91</option>
+                         <option value="+81">+81</option>
+                    </select>
+                    </div>
+                    <div class="col-8">
+                        <input type="tel" name="phone" class="form-control" placeholder="Phone">
+                    </div>
+                </div>
+                   
+                  
+             </div>
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Email address">
+            </div>
+              <div class="form-group">
+             <input type="text" name="purpose" class="form-control" placeholder="Purpose">
+            </div>
+
+         </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary mx-auto d-block">Submit</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+<div class="chat-screen" id="chat-screeny">
+    <div class="bg-transparent">
+        <img src="img/fuji.png" alt="logo" class="img-fluid mx-auto d-block bg-light brder" style="width: 65px;height: 65px;">
+        <!-- <h2 class="text-white text-center lgf">Akirabot</h2> -->
+        <button type="button" class="close clsbt closechatscr" aria-label="Close" onclick="showing();">
+ 
+        
+ 
+     </button>
+     <button type="button" class="hello close clsbt closechatscr" style="z-index:999999;">
+         <span aria-hidden="true" class="text-white bgwj">&times;</span>
+     </button>
+    </div>
+    <div class="chat-mail">
+        <!-- <div class="row">
+            <div class="col-md-12 text-center mb-2">
+                <p>Hi 👋! Please fill out the form below to start chatting with the next available agent.</p>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="card">
+      <div class="card-body text-center">
+        <p class="card-text text-center text-light">Disclaimer</p>
+        <p class="card-text text-light">Akira is a technology-based ChatBot of Fujisakura Technologies Pvt. Ltd.,As the bot is still learning, please verify the response given by Akira-bot from other sources of information.</p>
+      </div>
+    </div>
+            <div class="col-md-12">
+                <button class="btn text-light btn-rounded mx-auto d-block mt-5 bgfd" >Get Started</button>
+            </div>
+           <div class="col-md-12">
+               <div class="powered-by">Powered by Akirabot</div>
+           </div>
+        </div>
+    </div>
+    <div class="chat-body hide">
+            <div class="chat-header fixed-top">
+        <div class="chat-header-title">
+            <span class="dot"></span>
+            <span>Akirabot</span>
+            <i class="fa fa-refresh float-right" onclick="refresh();" id="reload"></i>
+            <span class="custom-control custom-switch float-right">
+                <input type="checkbox" class="custom-control-input" id="switch1" onclick="myFunction()">
+                <label class="custom-control-label" for="switch1"></label>
+            </span>
+
+        </div>
+        <div class="chat-header-option hide">
+             <!-- <label class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+                  <label class="custom-control-label" for="switch1"></label>
+                </label> -->
+            <span class="dropdown custom-dropdown">
+               
+               
+   
+          
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                 <i class="fa fa-ellipsis-h text-light"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink1" style="will-change: transform;">
+                    <a class="dropdown-item print" href="javascript:void(0);">
+                    
+                        <i class="fa fa-file-text"></i>
+                        Transcriptions
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0);">
+                        <i class="fa fa-language"></i>
+                        Language Preference
+                    </a>
+                 
+                </div>
+            </span>
+        </div>
+     <!--    <button type="button" class="close clsbt closechatscr dbsqw" aria-label="Close" onclick="showingq();">
+ 
+        <span aria-hidden="true" class="text-white bgwj vsaf">&times;</span>
+ 
+     </button> -->
+     <button type="button" class="hello close clsbt closechatscr dbsqw" aria-label="Close"><span aria-hidden="true" class="text-white bgwj vsaf">&times;</span></button>
+    </div>
+        <div class="chat-start">
+            <script type="text/javascript"> 
+        var myDate = new Date(); 
+        var myDay = myDate.getDay(); 
+        
+        // Array of days. 
+        var weekday = ['Sunday', 'Monday', 'Tuesday', 
+            'Wednesday', 'Thursday', 'Friday', 'Saturday' 
+        ]; 
+        document.write(weekday[myDay]); 
+        document.write("&nbsp;&nbsp;"); 
+        
+        // get hour value. 
+        var hours = myDate.getHours(); 
+        var ampm = hours >= 12 ? 'PM' : 'AM'; 
+        hours = hours % 12; 
+        hours = hours ? hours : 12; 
+        var minutes = myDate.getMinutes(); 
+        minutes = minutes < 10 ? '0' + minutes : minutes; 
+        var myTime = hours + " " + " : " + minutes + ampm;
+        document.write(myTime); 
+    </script> 
+        </div>
+        <!--div class="chat-bubble you srf">Hello there, I'm Fujisakura's virtual assistant. How can I help you?<br>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <button class="btn btn-outline-white bwh text-dark" id="showconts">About us</button>
+                </div>
+                 <div class="col-6">
+                    <button class="btn btn-outline-white text-dark" id="showcontserv">Services</button>
+                </div>
+                
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <button class="btn btn-outline-white text-dark bwh">Contact us</button>
+                </div>
+                 <div class="col-6">
+                    <button class="btn btn-outline-white text-dark">Career</button>
+                </div>
+            </div>
+        </div-->
+       <!--  <div class="chat-bubble me">Hi, I am back</div>
+        <div class="chat-bubble me">I just want my Report Status.</div>
+        <div class="chat-bubble me">As i am not getting any weekly reports nowadays.</div> -->
+        <!--div class="chat-bubble you" >
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto;display: block;shape-rendering: auto;width: 43px;height: 20px;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <circle cx="0" cy="44.1678" r="15" fill="#7F00FF" class="dch">
+                    <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.6s"></animate>
+                </circle> <circle cx="45" cy="43.0965" r="15" fill="#7F00FF" class="dch">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.39999999999999997s"></animate>
+            </circle> <circle cx="90" cy="52.0442" r="15" fill="#7F00FF" class="dch">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.19999999999999998s"></animate>
+            </circle></svg>
+        </div-->
+       <div class="chat-container" id="chat-container">
+                <div class="chat-logs" id="chatbox">
+				
+				
+				
+                </div>
+				<div class="chat-bubble you" id="bubble">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto;display: block;shape-rendering: auto;width: 43px;height: 20px;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <circle cx="0" cy="44.1678" r="15" fill="#7F00FF" class="dch">
+                    <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.6s"></animate>
+                </circle> <circle cx="45" cy="43.0965" r="15" fill="#7F00FF" class="dch">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.39999999999999997s"></animate>
+            </circle> <circle cx="90" cy="52.0442" r="15" fill="#7F00FF" class="dch">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.19999999999999998s"></animate>
+            </circle></svg>
+        </div>
+                
+            </div>
+        <!--div class="float-right bgts chat-bubble you srf" style="display: none;">
+            Could you tell me about fujisakura?
+        </div>
+        <div class="float-right bgtsv chat-bubble you srf" style="display: none;">
+            Could you tell me services in fujisakura?
+        </div-->
+
+    </div>
+	
+    <div class="chat-input hide">
+        <a class="speech" id="speech" name="speech" onclick="record();"><i class="fa fa-microphone" aria-hidden="true" id="micIcon"></i></a>
+        <input type="text" placeholder="Type a message..." id="example1" class="bhagdvd">
+        <div class="input-action-icon">
+
+            <a><label for="upload_imgs"><i class="fa fa-paperclip" aria-hidden="true"></i></label><input class="show-for-sr" type="file" id="upload_imgs" name="upload_imgs[]" style="display: none;" multiple /></a>
+            <div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
+
+            <!-- <a><i class="fa fa-smile-o" aria-hidden="true"></i></a> -->
+            <a><i class="fa fa-paper-plane" aria-hidden="true" id="chat-submit"></i></a>
+        </div>
+    </div>
+  
+</div>
+
+<div class="chat-bot-icon fadeIn" id="chat-bot-icon" onclick="hiding();">
+    <!-- <img src="img/we-are-here.svg"/> -->
+    <!-- <p>Chat</p> -->
+
+<div>
+  <span class="mdi mdi-robot mdi-48px text-light mt-2"></span>
+</div>
+  <div class="slideLeftIn fnt"><span class="text-nowrap">May I help you?</span></div>
+    
+
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x "><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> -->
+    <!-- <i class="fa fa-close fa-3x text-light mt-2"></i> -->
+</div>
+<!-- Chat Bot UI Ends -->
+<!-- Time line Html Start -->
+
+<script type="257be86a981729866f2fa61c-text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-83834093-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="257be86a981729866f2fa61c-|49" defer=""></script>
+<!-- Time line Html Ends -->
+<!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/select2.min.js"></script>
+<script type="text/javascript" src="js/mdb.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.3.3/jQuery.print.min.js"></script>
+ <script>
+ 
+ 
+function getFirstResponse(firstText) {
+setTimeout(() => { $.get("https://xwkt.pythonanywhere.com/get", {msg:firstText}).done(function(data){
+var botHtml ='<table class="botText" id="botText"><tr><td width="20px"><img class="avatar" src="img/fuji.png"  align="left"></td><td align="left";>' + data + '</td></tr></table>';
+document.getElementById('bubble').style.visibility = "hidden";
+$(botHtml).appendTo("#chatbox").hide().fadeIn(700);
+//document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+});
+ },1500);
+}
+
+
+function valid() {
+var rawText = $("#example1").val();
+if(rawText.trim() == ""){
+ return false;
+ }
+ else{
+    var rawText = $("#example1").val();
+    var userHtml = '<div class="lag"><table class="userText" id="userText"><tr><td style="word-break: break-all;">' + rawText + '</td></tr></table</div>';
+    var height = 0;
+    $('div p').each(function(i, value){
+    height += parseInt($(this).height());
+    });
+    height += '5000';
+    $('div').animate({scrollTop: height, behavior: 'smooth' },500);
+    $("#example1").val("");
+    $(userHtml).appendTo("#chatbox").hide().show(500);
+    setTimeout(() => { getBotResponse(rawText)},700);
+ }
+ }
+
+
+
+function getBotResponse(rawText) {
+       document.getElementById('bubble').style.visibility = "visible";
+        setTimeout(() => { $.get("https://xwkt.pythonanywhere.com/get", { msg: rawText }).done(function(data) {
+        var botHtml ='<table class="botText" id="botText"><tr><td width="20px"><img class="avatar" src="img/fuji.png"  align="left"></td><td id="data" align="left";>' + data + '</td></tr></table>';
+        document.getElementById('bubble').style.visibility = "hidden";
+        var height = 0;
+        $('div p').each(function(i, value){
+        height += parseInt($(this).height());
+        });
+        height += '5000';
+        $('div').animate({scrollTop: height,behavior: 'smooth'},200);
+        $(botHtml).appendTo("#chatbox").hide().fadeIn(500);
+        //document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+        });
+        },1500);
+    }
+
+
+
+
+ function chatSuggest(firstText) {
+        var userHtml = '<div class="lag"><table class="userText" id="userText"><tr><td>' + firstText + '</td></tr></table</div>';
+        var height = 0;
+        $('div p').each(function(i, value){
+            height += parseInt($(this).height());
+        });
+        height += '5000';
+        $('div').animate({scrollTop: height, behavior: 'smooth' },500);
+        $("#chat-input").val("");
+        $(userHtml).appendTo("#chatbox").hide().fadeIn(500);
+        document.getElementById('bubble').style.visibility = "visible";
+       setTimeout(() => { $.get("https://xwkt.pythonanywhere.com/get", { msg: firstText }).done(function(data) {
+            var botHtml ='<table class="botText" id="botText"><tr><td width="20px"><img class="avatar" src="img/fuji.png"  align="left"></td><td id="data" align="left";>' + data + '</td></tr></table>';
+            document.getElementById('bubble').style.visibility = "hidden";
+             var height = 0;
+             $('div p').each(function(i, value){
+             height += parseInt($(this).height());
+             });
+             height += '5000';
+             $('div').animate({scrollTop: height, behavior: 'smooth' },500);
+             $(botHtml).appendTo("#chatbox").hide().fadeIn(500);
+             //document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+             });
+             },1500);
+  }
+
+$("#example1").keypress(function(e) {
+if(e.which == 13) {
+valid();
+}
+
+});
+$("#chat-submit").click(function() {
+valid();
+})
+
+
+// $("#example1").keypress(function(e) {
+// 	if(e.which == 13) {
+// 	valid();
+// 	}
+// });
+// $("#chat-submit").click(function() {
+// })
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        $(document).ready(function(){
+            $(".select2_el").select2({
+            });
+        });
+        </script>
+<script>
+    $(document).ready(function () {
+        
+        //Toggle fullscreen
+        $(".chat-bot-icon").click(function (e) {
+            
+            // $(this).children('img').toggleClass('hide');
+            // $(this).children('i').toggleClass('animate');
+            $('.chat-screen').toggleClass('show-chat');
+            document.getElementById('chat-bot-icon').style.visibility="hidden";
+            // $('.chat-bot-icon').removeClass('hide');
+        });
+
+
+        $('.chat-mail button').click(function () {
+            $('.chat-mail').addClass('hide');
+            $('.chat-body').removeClass('hide');
+            $('.chat-input').removeClass('hide');
+            $('.chat-header-option').removeClass('hide');
+        });
+        $('.end-chat').click(function () {
+            $('.chat-body').addClass('hide');
+            $('.chat-input').addClass('hide');
+            $('.chat-session-end').removeClass('hide');
+            $('.chat-header-option').addClass('hide');
+        });
+
+    });
+
+</script>
+
+
+<!-- <script type="text/javascript">
+    function hiding(){
+        document.getElementById("chaticon").style.display="none";
+    }
+</script>
+<script type="text/javascript">
+    function showing(){
+        document.getElementById("chaticon").style.display="block";
+    }
+</script>
+<script type="text/javascript">
+    function showingq(){
+        document.getElementById("chaticon").style.display="block";
+    }
+</script> -->
+<script>
+function myFunction() {
+   var checkBox = document.getElementById("switch1");
+   if (checkBox.checked == true){
+    document.getElementById('Theme').setAttribute('href','css/dark.css');
+    // document.getElementById('micIcon').setAttribute('src',"img/mic2.svg");
+    // document.getElementById('attach').setAttribute('src',"img/attachment2.svg");
+  } else {
+    document.getElementById('Theme').setAttribute('href','css/chatBot.css');
+    // document.getElementById('micIcon').setAttribute('src',"img/mic1.svg");
+    // document.getElementById('attach').setAttribute('src',"img/attachment.svg");
+  }
+}
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+             $(".bgfd").click(function (e) {
+            $('.bg-transparent').toggleClass('hide');
+        });
+
+        });
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#showconts").click(function(){
+    $(".bgts").show();
+  });
+    $("#showcontserv").click(function(){
+    $(".bgtsv").show();
+  });
+});
+</script>
+   <script>
+   var imgUpload = document.getElementById('upload_imgs')
+  , imgPreview = document.getElementById('img_preview')
+  , totalFiles
+  , previewTitle
+  , previewTitleText
+  , img;
+imgUpload.addEventListener('change', previewImgs, false);
+function previewImgs(event) {
+  totalFiles = imgUpload.files.length;
+  if(!!totalFiles) {
+    imgPreview.classList.remove('quote-imgs-thumbs--hidden');
+    previewTitle = document.createElement('p');
+    //previewTitle.style.fontWeight = 'bold';
+    //previewTitleText = document.createTextNode(totalFiles + ' Total Images Selected');
+    //previewTitle.appendChild(previewTitleText);
+    //imgPreview.appendChild(previewTitle);
+    //$(previewTitle).appendTo("#chatbox").hide().fadeIn(500);
+  }
+  for(var i = 0; i < totalFiles; i++) {
+    img = document.createElement('img');
+    img.src = URL.createObjectURL(event.target.files[i]);
+    img.classList.add('img-preview-thumb');
+    imgPreview.appendChild(img);
+    $(img).appendTo("#chatbox").hide().fadeIn(500);
+  }
+}
+</script>
+<!-- <script>
+function hideElem() {
+  document.getElementById("myImg").style.visibility = "hidden"; 
+}
+
+function showElem() {
+  document.getElementById("myImg").style.visibility = "visible"; 
+}
+</script> -->
+
+<script src="js/emojionearea.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $("#example1").emojioneArea({
+      autoHideFilters: true
+    });
+  });
+</script>
+
+  <script type="text/javascript">
+  function record(){
+      var recognition = new webkitSpeechRecognition();
+      recognition.lang = "en-GB";
+      recognition.onresult = function(event) {
+        console.log(event);
+        document.getElementById('example1').value = event.results[0][0].transcript;
+        setTimeout(recordValid,5000);
+          }
+      recognition.start();
+   }
+$("#speech").keypress(function(e) {
+if(e.which == 13) {
+getBotResponse();
+}
+});
+</script>
+<script>
+    function recordValid(){
+    var selected = document.activeElement;
+if (selected.id == "example1") {
+  return;
+}else{
+  valid();
+}
+  }
+</script>
+
+<script >
+    $('.print').on('click', function() { // select print button with class "print," then on click run callback function
+  $.print(".chat-body"); // inside callback function the section with class "chat-logs" will be printed
+});
+</script>
+
+
+<script>
+$(document).ready(function () {
+    $('.hello').click(function (e){
+         $('.chat-screen').removeClass('show-chat');
+         document.getElementById('chat-bot-icon').style.visibility="visible";
+         
+    });
+});
+
+</script>
+<script>
+function refresh(){
+    document.getElementById("reload").disabled = true;
+        $("body").load(location.href+" body>*","");
+         getFirstResponse('Greetings!!');
+    setTimeout(function() {
+        document.getElementById("reload").disabled = false;
+    }, 4000);
+}
+document.getElementById("reload").addEventListener("click", refresh);
+</script>
+
+
+<!-- <script type="text/javascript">
+    function openCarrier(){
+        document.getElementById("chat-body").style.display="block";
+    }
+</script> -->
+</body>
+
+</html>
